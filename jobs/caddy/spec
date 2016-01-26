@@ -1,0 +1,22 @@
+---
+name: caddy
+packages:
+- caddy
+templates:
+  bin/ctl.erb: bin/ctl
+  bin/monit_debugger: bin/monit_debugger
+  data/properties.sh.erb: data/properties.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  config/Caddyfile.erb: conf/Caddyfile
+
+
+properties:
+  caddy.endpoints:
+    description: "Endpoints for caddy to forward to"
+  caddy.ca:
+    description: "CA to use"
+    default: https://acme-staging.api.letsencrypt.org
+    # for prod use acme-v01.api.letsencrypt.org
+  caddy.ca_email:
+    description: "Email for CA registration"

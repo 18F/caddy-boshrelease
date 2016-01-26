@@ -1,0 +1,5 @@
+check process caddy
+  with pidfile /var/vcap/sys/run/caddy/caddy.pid
+  start program "/var/vcap/jobs/caddy/bin/monit_debugger caddy_ctl '/var/vcap/jobs/caddy/bin/ctl start'"
+  stop program "/var/vcap/jobs/caddy/bin/monit_debugger caddy_ctl '/var/vcap/jobs/caddy/bin/ctl stop'"
+  group vcap
