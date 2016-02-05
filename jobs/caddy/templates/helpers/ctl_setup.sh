@@ -19,6 +19,9 @@ output_label=${2:-${JOB_NAME}}
 export JOB_DIR=/var/vcap/jobs/$JOB_NAME
 chmod 755 $JOB_DIR # to access file via symlink
 
+# Ensure that caddy specific configs are protected
+chmod -R 700 $JOB_DIR/conf/.caddy
+
 # Load some bosh deployment properties into env vars
 # Try to put all ERb into data/properties.sh.erb
 # incl $NAME, $JOB_INDEX, $WEBAPP_DIR
@@ -47,13 +50,18 @@ export RUN_DIR=/var/vcap/sys/run/$JOB_NAME
 export LOG_DIR=/var/vcap/sys/log/$JOB_NAME
 export TMP_DIR=/var/vcap/sys/tmp/$JOB_NAME
 export STORE_DIR=/var/vcap/store/$JOB_NAME
-for dir in $RUN_DIR $LOG_DIR $TMP_DIR $STORE_DIR
+export SHARED_DIR=/var/vcap/nfs/shared/$JOB_NAME
+for dir in $RUN_DIR $LOG_DIR $TMP_DIR $STORE_DIR $SHARED_DIR
 do
   mkdir -p ${dir}
   chown vcap:vcap ${dir}
   chmod 775 ${dir}
 done
 export TMPDIR=$TMP_DIR
+
+# Copy caddy configs to shared folder
+chown -R vcap:vcap $JOB_DIR/conf
+cp -rp $JOB_DIR/conf/.caddy $SHARED_DIR
 
 export C_INCLUDE_PATH=/var/vcap/packages/mysqlclient/include/mysql:/var/vcap/packages/sqlite/include:/var/vcap/packages/libpq/include
 export LIBRARY_PATH=/var/vcap/packages/mysqlclient/lib/mysql:/var/vcap/packages/sqlite/lib:/var/vcap/packages/libpq/lib

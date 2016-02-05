@@ -1,4 +1,15 @@
-:80, :443 {
+:443 {
+  tls <%= p("caddy.ca_email") %>
+  proxy / <%= p("caddy.endpoints").join(" ") %> {
+    policy round_robin
+    websocket
+    proxy_header Host {host}
+    proxy_header X-Real-IP {remote}
+    proxy_header X-Forwarded-Proto {scheme}
+  }
+}
+
+:80 {
   tls <%= p("caddy.ca_email") %>
   proxy / <%= p("caddy.endpoints").join(" ") %> {
     policy round_robin

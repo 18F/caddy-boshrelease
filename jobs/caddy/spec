@@ -9,6 +9,8 @@ templates:
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
   config/Caddyfile.erb: conf/Caddyfile
+  config/default.json.erb: conf/.caddy/letsencrypt/users/default/default.json
+  config/default.key.erb: conf/.caddy/letsencrypt/users/default/default.key
 
 
 properties:
@@ -20,3 +22,9 @@ properties:
     # for prod use acme-v01.api.letsencrypt.org
   caddy.ca_email:
     description: "Email for CA registration"
+  caddy.private_key:
+    description: "Private ACME key"
+  caddy.pub_key:
+    description: "Public ACME key"
+  caddy.reg_id:
+    description: "ACME registration id"

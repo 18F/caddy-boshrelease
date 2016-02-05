@@ -9,6 +9,8 @@ source /var/vcap/jobs/caddy/helpers/ctl_setup.sh 'caddy'
 export PORT=${PORT:-5000}
 export LANG=en_US.UTF-8
 
+export HOME=$SHARED_DIR
+
 case $1 in
 
   start)
@@ -22,6 +24,7 @@ case $1 in
     exec chpst -u vcap:vcap caddy \
          -conf /var/vcap/jobs/caddy/conf/Caddyfile \
          -ca <%= p("caddy.ca") %> \
+         -log stdout \
          >>$LOG_DIR/$JOB_NAME.log 2>&1
 
     ;;

@@ -1,0 +1,19 @@
+{
+  "Email": "<%= p("caddy.ca_email") %>",
+  "Registration": {
+    "body": {
+      "resource": "reg",
+      "id": <%= p("caddy.reg_id") %>,
+      "key": {
+        "kty": "RSA",
+        "n": "<%= p("caddy.pub_key") %>",
+        "e": "AQAB"
+      },
+      "contact": null,
+      "agreement": "https://letsencrypt.org/documents/LE-SA-v1.0.1-July-27-2015.pdf"
+    },
+    "uri": "<%= p("caddy.ca") %>/acme/reg/<%= p("caddy.reg_id") %>",
+    "new_authzr_uri": "<%= p("caddy.ca") %>/acme/new-authz",
+    "terms_of_service": "https://letsencrypt.org/documents/LE-SA-v1.0.1-July-27-2015.pdf"
+  }
+}

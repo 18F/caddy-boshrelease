@@ -11,3 +11,4 @@ export HOME=/var/vcap
 
 mkdir $BOSH_INSTALL_TARGET/bin
 cp -a caddy/caddy $BOSH_INSTALL_TARGET/bin/
+chmod +x $BOSH_INSTALL_TARGET/bin/caddy
