@@ -3,3 +3,7 @@ caddy/caddy:
   object_id: 18a2ca87-34b1-4d40-a166-a030332430a7
   sha: 0c0dccc57fcd11525090e749fa92d5e6664585ff
   size: 14334400
+caddy/caddy.tar.gz:
+  object_id: 0049c86d-c4e4-41bc-a3f3-2830b307d13c
+  sha: 8751cdea7c8070a195663c030bc5b8d78322f65c
+  size: 14336000

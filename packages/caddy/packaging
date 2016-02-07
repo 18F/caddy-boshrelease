@@ -8,7 +8,8 @@ CPUS=$(grep -c ^processor /proc/cpuinfo)
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 export HOME=/var/vcap
 
+cd caddy
+tar xf caddy.tar.gz
 
 mkdir $BOSH_INSTALL_TARGET/bin
-cp -a caddy/caddy $BOSH_INSTALL_TARGET/bin/
-chmod +x $BOSH_INSTALL_TARGET/bin/caddy
+cp -a caddy $BOSH_INSTALL_TARGET/bin/

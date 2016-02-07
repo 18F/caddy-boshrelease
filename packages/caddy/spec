@@ -2,4 +2,4 @@
 name: caddy
 dependencies: []
 files:
-- caddy/caddy
+- caddy/caddy.tar.gz
