@@ -51,7 +51,7 @@ export LOG_DIR=/var/vcap/sys/log/$JOB_NAME
 export TMP_DIR=/var/vcap/sys/tmp/$JOB_NAME
 export STORE_DIR=/var/vcap/store/$JOB_NAME
 export SHARED_DIR=/var/vcap/nfs/shared/$JOB_NAME
-for dir in $RUN_DIR $LOG_DIR $TMP_DIR $STORE_DIR $SHARED_DIR
+for dir in $RUN_DIR $LOG_DIR $TMP_DIR $STORE_DIR
 do
   mkdir -p ${dir}
   chown vcap:vcap ${dir}
@@ -60,8 +60,9 @@ done
 export TMPDIR=$TMP_DIR
 
 # Copy caddy configs to shared folder
+sudo -u vcap mkdir -p $SHARED_DIR
 chown -R vcap:vcap $JOB_DIR/conf
-cp -rp $JOB_DIR/conf/.caddy $SHARED_DIR
+sudo -u vcap cp -rp $JOB_DIR/conf/.caddy $SHARED_DIR
 
 export C_INCLUDE_PATH=/var/vcap/packages/mysqlclient/include/mysql:/var/vcap/packages/sqlite/include:/var/vcap/packages/libpq/include
 export LIBRARY_PATH=/var/vcap/packages/mysqlclient/lib/mysql:/var/vcap/packages/sqlite/lib:/var/vcap/packages/libpq/lib
