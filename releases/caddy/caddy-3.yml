@@ -1,0 +1,20 @@
+---
+packages:
+- name: caddy
+  version: 1319669f75f7388e529d40edb52a144e272f6d78
+  fingerprint: 1319669f75f7388e529d40edb52a144e272f6d78
+  sha1: 6ab668afea4284904bb6305fb24453a3231a4a1b
+  dependencies: []
+jobs:
+- name: caddy
+  version: efd40149abb600eddb2009caa854131c0ba82f33
+  fingerprint: efd40149abb600eddb2009caa854131c0ba82f33
+  sha1: 072f2a9447d96a7f063790b9de41eee2ea09bbce
+license:
+  version: be7df4f66a69598d0730a3e06d9383bd2e1724b0
+  fingerprint: be7df4f66a69598d0730a3e06d9383bd2e1724b0
+  sha1: 162caa2a7136ef4b0eba912e286180c79f7fc991
+commit_hash: ae8494fe
+uncommitted_changes: true
+name: caddy
+version: '3'
