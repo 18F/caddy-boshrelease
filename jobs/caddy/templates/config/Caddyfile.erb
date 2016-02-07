@@ -1,5 +1,5 @@
 :443 {
-  tls <%= p("caddy.ca_email") %>
+  tls ""
   proxy / <%= p("caddy.endpoints").join(" ") %> {
     policy round_robin
     websocket
@@ -10,7 +10,6 @@
 }
 
 :80 {
-  tls <%= p("caddy.ca_email") %>
   proxy / <%= p("caddy.endpoints").join(" ") %> {
     policy round_robin
     websocket

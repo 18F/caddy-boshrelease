@@ -21,9 +21,11 @@ case $1 in
 
     setcap cap_net_bind_service=+ep /var/vcap/packages/caddy/bin/caddy
 
+    ulimit -n 4096
+
     exec chpst -u vcap:vcap caddy \
          -conf /var/vcap/jobs/caddy/conf/Caddyfile \
-         -ca <%= p("caddy.ca") %> \
+         -ca <%= p("caddy.ca") %>/directory \
          -log stdout \
          >>$LOG_DIR/$JOB_NAME.log 2>&1
 
